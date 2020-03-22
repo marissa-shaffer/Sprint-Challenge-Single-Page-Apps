@@ -3,9 +3,13 @@ import reactDOM from 'react-dom';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import Header from "./components/Header.js";
+import WelcomePage from "./components/WelcomePage.js";
+import CharacterList from "./components/CharacterList.js";
+import styled from 'styled-components';
+import SearchForm from "./components/SearchForm";
 
 export default function App() {
-  const [charaterForm, setCharacterForm] = useState([]);
+  const [characterForm, setCharacterForm] = useState([]);
 
   useEffect(() => {
     axios.get("https://rickandmortyapi.com/api/character/")
@@ -16,7 +20,6 @@ export default function App() {
   useEffect(() =>{
 
   }, [characterForm]);
-
 
   return (
     <main data-testid='app'>
