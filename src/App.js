@@ -10,24 +10,24 @@ import SearchForm from "./components/SearchForm";
 
 export default function App() {
   const [characterForm, setCharacterForm] = useState([]);
-
+  
   useEffect(() => {
     axios.get("https://rickandmortyapi.com/api/character/")
     .then(response => {
-      setCharacterForm(response.data.results) 
+      setCharacterForm(response.data.results)     
     });
   }, []);
-  useEffect(() =>{
+  useEffect(() => {
 
   }, [characterForm]);
-
   const [searchState, setSearchState] = useState("");
   const handleInput = e => {
     setSearchState(e.target.value);
   }
   const filtered = characterForm.filter(character => {
-    return character.name.toLowerCase().include(searchState.toLowerCase());
+    return character.name.toLowerCase().includes(searchState.toLowerCase());
   })
+
 
   const Navbar = styled.div`
   margin: 0 auto;
