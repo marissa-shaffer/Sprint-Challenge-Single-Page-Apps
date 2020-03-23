@@ -1,16 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import styled from "styled-components";
+import SearchForm from '../components/SearchForm.js';
 
-export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
-
-  useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+const CharacterList = props => {
+  const CharacterForm = styled.div`
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly; 
+  `;
 
   return (
-    <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
-    </section>
-  );
+  <div>
+    
+    <CharacterForm>
+     {props.forms.map(form => (
+       <div key={form.id}>
+         <img src={form.image} alt=""/>
+         <h2>{form.name}</h2>
+       </div>
+     ))} 
+    </CharacterForm>
+    </div>
+  )
 }
+
+export default CharacterList;
