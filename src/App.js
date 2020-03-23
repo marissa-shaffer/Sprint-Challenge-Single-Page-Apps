@@ -21,9 +21,25 @@ export default function App() {
 
   }, [characterForm]);
 
+  const Navbar = styled.div`
+  margin: 0 auto;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 25px;
+  `
+
   return (
     <main data-testid='app'>
       <Header />
+      <Navbar>
+        <Link style={{textDecoration: 'none', color: 'Green'}} to="/">Home</Link>
+        <Link style={{textDecoration: 'none', color: 'Green'}} to="/character-list">Character List</Link>
+      </Navbar>
+      <Route exact path="/" component={WelcomePage} />
+      <Route path = "/character-list" component={CharacterList}></Route>
     </main>
   );
 }
