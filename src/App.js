@@ -21,6 +21,14 @@ export default function App() {
 
   }, [characterForm]);
 
+  const [searchState, setSearchState] = useState("");
+  const handleInput = e => {
+    setSearchState(e.target.value);
+  }
+  const filtered = characterForm.filter(character => {
+    return character.name.toLowerCase().include(searchState.toLowerCase());
+  })
+
   const Navbar = styled.div`
   margin: 0 auto;
   width: 40%;
@@ -38,8 +46,9 @@ export default function App() {
         <Link style={{textDecoration: 'none', color: 'Green'}} to="/">Home</Link>
         <Link style={{textDecoration: 'none', color: 'Green'}} to="/character-list">Character List</Link>
       </Navbar>
+      <SearchForm handleInput = {handleInput} />
       <Route exact path="/" component={WelcomePage} />
-      <Route path = "/character-list" component={CharacterList}></Route>
+      <Route path = "/character-list" component={CharacterList}><CharacterList forms={filtered} /></Route>
     </main>
   );
 }
